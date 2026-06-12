@@ -1,0 +1,21 @@
+// ENFILADE · fastfetch — every new terminal can greet you with its room
+{
+  "logo": { "type": "small", "padding": { "top": 1 } },
+  "display": { "separator": "  " },
+  "modules": [
+    { "type": "command", "key": "◆ room", "keyColor": "blue",
+      "text": "cat ~/.config/enfilade/room 2>/dev/null || echo ATELIER" },
+    { "type": "title", "format": "{user-name}@{host-name}" },
+    "separator",
+    { "type": "os",      "key": "os",   "keyColor": "blue" },
+    { "type": "wm",      "key": "wm",   "keyColor": "blue" },
+    { "type": "kernel",  "key": "krn",  "keyColor": "blue" },
+    { "type": "uptime",  "key": "up",   "keyColor": "blue" },
+    { "type": "packages","key": "pkg",  "keyColor": "blue" },
+    { "type": "memory",  "key": "mem",  "keyColor": "blue" },
+    { "type": "player",  "key": "♪",    "keyColor": "yellow" },
+    { "type": "media",   "key": " ",    "keyColor": "yellow" },
+    "break",
+    { "type": "colors", "paddingLeft": 2, "symbol": "circle" }
+  ]
+}

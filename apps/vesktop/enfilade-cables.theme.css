@@ -1,0 +1,67 @@
+/**
+ * @name enfilade-cables
+ * @description system24 (refact0r) recolored to the ENFILADE CABLES room —
+ *              violet signal on deep ink. TUI-styled Discord, ToS-safe lane.
+ * @author enfilade
+ * @version 1.0.0
+ */
+
+/* Pulls the live system24 build; the :root below only recolors it.
+   Offline / URL moved? Enable the locally fetched system24.theme.css in
+   Vesktop (install.sh drops it next to this file), keep THIS file enabled
+   AFTER it, and delete the @import line — later sheets win. */
+@import url('https://refact0r.github.io/system24/build/system24.css');
+
+/* CABLES palette, for hand-recoloring if upstream ever renames variables:
+   bg #131020 · bg-alt #1a1530 · fg #e2dcf2 · muted #7a7396
+   accent #a78bfa · accent-2 #7dcfff · border #2a2344                    */
+:root {
+	--font: 'JetBrainsMono Nerd Font', 'JetBrains Mono', monospace;
+	--code-font: 'JetBrainsMono Nerd Font', monospace;
+
+	/* text ramp (0 = on-accent) */
+	--text-0: #131020;
+	--text-1: #f0ecfb;
+	--text-2: #e2dcf2;
+	--text-3: #beb6d8;
+	--text-4: #7a7396;
+	--text-5: #564f73;
+
+	/* surfaces */
+	--bg-0: #0f0c1a;
+	--bg-1: #221c3d;
+	--bg-2: #1a1530;
+	--bg-3: #131020;
+	--bg-4: #0f0c1a;
+	--hover:         rgba(167, 139, 250, 0.08);
+	--active:        rgba(167, 139, 250, 0.14);
+	--active-2:      rgba(167, 139, 250, 0.20);
+	--message-hover: rgba(125, 207, 255, 0.05);
+
+	/* accents */
+	--accent-1: #c4b5fd;
+	--accent-2: #a78bfa;
+	--accent-3: #9678f5;
+	--accent-4: #8463e8;
+	--accent-5: #6f50cf;
+	--accent-new: #7dcfff;
+	--mention:       rgba(167, 139, 250, 0.10);
+	--mention-hover: rgba(167, 139, 250, 0.16);
+	--reply:         rgba(125, 207, 255, 0.08);
+	--reply-hover:   rgba(125, 207, 255, 0.13);
+
+	/* presence */
+	--online:    #9ece9e;
+	--dnd:       #e06c75;
+	--idle:      #e5c07b;
+	--streaming: #a78bfa;
+	--offline:   #564f73;
+
+	/* the TUI lines */
+	--border-width: 2px;
+	--border-color: #2a2344;
+	--border-hover-color: #a78bfa;
+	--border-transition: 0.2s ease;
+
+	--unread-badge-bg: #a78bfa;
+}

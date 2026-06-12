@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Your Steam library as a fuzzel menu, in whatever room you're in —
+# selection walks you into the Arcade and fires steam://rungameid.
+# Parses appmanifest_*.acf across ALL library folders. No deps beyond awk.
+set -u
+ROOT="$HOME/.local/share/Steam"
+[ -d "$ROOT" ] || ROOT="$HOME/.steam/steam"
+
+libs="$ROOT/steamapps"
+vdf="$ROOT/steamapps/libraryfolders.vdf"
+[ -r "$vdf" ] && libs="$libs $(awk -F'"' '/"path"/{print $4"/steamapps"}' "$vdf")"
+
+pick=$(for d in $libs; do
+  for m in "$d"/appmanifest_*.acf; do
+    [ -r "$m" ] || continue
+    awk -F'"' '/"appid"/{id=$4} /"name"/{name=$4}
+               END{if(id&&name) printf "%s\t%s\n", name, id}' "$m"
+  done
+done | sort -u | fuzzel --dmenu -p "󰊴  ") || exit 0
+
+id="${pick##*	}"
+hyprctl dispatch workspace 6 >/dev/null
+exec steam "steam://rungameid/$id"

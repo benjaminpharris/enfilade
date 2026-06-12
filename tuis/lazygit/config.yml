@@ -1,0 +1,15 @@
+# ENFILADE · lazygit — ANSI all the way down
+gui:
+  nerdFontsVersion: "3"
+  border: rounded
+  showRandomTip: false
+  theme:
+    activeBorderColor:   [blue, bold]
+    inactiveBorderColor: [default]
+    selectedLineBgColor: [reverse]
+    optionsTextColor:    [cyan]
+    unstagedChangesColor: [red]
+git:
+  paging:
+    colorArg: always
+    pager: ""

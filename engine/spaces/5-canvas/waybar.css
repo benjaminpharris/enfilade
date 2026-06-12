@@ -1,0 +1,8 @@
+/* ENFILADE · CANVAS — spaced copies this to waybar/palette.css live */
+@define-color bg      #101113;
+@define-color bg-alt  #15171a;
+@define-color fg      #ece8df;
+@define-color muted   #84817a;
+@define-color accent  #d9d2c2;
+@define-color accent2 #8fa3b8;
+@define-color alert   #c98a8a;

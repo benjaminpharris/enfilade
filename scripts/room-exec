@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# room-exec [--room N] CMD...
+# The brainstorm's edge case, solved: a spawn inherits the palette of its
+# DESTINATION room, not wherever the launch command fired.
+#  · no --room  → destination = current room (the symlink)
+#  · --room N   → jump there first, then spawn; kitty additionally gets the
+#                 room's color file layered over base (last --config wins).
+set -u
+CFG="${XDG_CONFIG_HOME:-$HOME/.config}"
+ENG="$CFG/enfilade/engine"
+room=""
+[ "${1:-}" = "--room" ] && { room="$2"; shift 2; }
+
+if [ -n "$room" ]; then
+  dir=$(echo "$ENG"/spaces/"$room"-*)
+  hyprctl dispatch workspace "$room" >/dev/null   # entering the room IS the theme switch
+else
+  dir="$(readlink "$CFG/enfilade/current")"
+fi
+slug="${dir##*/}"; slug="${slug#*-}"              # 4-listening-room → listening-room
+
+. "$dir/palette.sh"
+export ROOM_NAME ROOM_ACCENT="$ACCENT" ROOM_BG="$BG"
+
+case "${1:-kitty}" in
+  kitty) shift 2>/dev/null || true
+         exec kitty --class "kitty-${slug%%-*}" \
+              --config "$CFG/kitty/kitty.conf" \
+              --config "$dir/kitty.conf" "$@" ;;
+  *)     exec "$@" ;;
+esac

@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# ╔════════════════════════════════════════════════════════════════╗
+# ║ spaced — the ENFILADE room daemon                               ║
+# ║                                                                 ║
+# ║ Theme is workspace-owned state. This daemon listens on          ║
+# ║ Hyprland socket2 and, on every room change:                     ║
+# ║   live   → waybar palette, mako colors, active-border accent,   ║
+# ║            wallpaper (swww)                                     ║
+# ║   lazy   → repoints ~/.config/enfilade/current so anything      ║
+# ║            spawned next is born in this room's colors and       ║
+# ║            keeps them. Open windows are never repainted.        ║
+# ║ ~90 lines. IPC-based: survives the hyprlang→Lua migration.      ║
+# ╚════════════════════════════════════════════════════════════════╝
+set -u
+CFG="${XDG_CONFIG_HOME:-$HOME/.config}"
+ENG="$CFG/enfilade/engine"
+CUR="$CFG/enfilade/current"
+SOCK="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
+WALLS="$HOME/Pictures/walls"
+
+room_dir() {                       # workspace id → space directory
+  case "$1" in
+    1) echo "$ENG/spaces/1-atelier"        ;;
+    2) echo "$ENG/spaces/2-cables"         ;;
+    3) echo "$ENG/spaces/3-archive"        ;;
+    4) echo "$ENG/spaces/4-listening-room" ;;
+    5) echo "$ENG/spaces/5-canvas"         ;;
+    6) echo "$ENG/spaces/6-arcade"         ;;
+    *) return 1 ;;                 # special:* & strays: keep last room
+  esac
+}
+
+apply() {
+  dir="$(room_dir "$1")" || return 0
+  [ "$(readlink "$CUR")" = "$dir" ] && return 0      # debounce
+  ln -sfn "$dir" "$CUR"
+  . "$dir/palette.sh"
+
+  # 1 · waybar — style.css @imports this; reload_style_on_change repaints
+  cp -f "$dir/waybar.css" "$CFG/waybar/palette.css"
+
+  # 2 · mako — colors live-swap; notifications are ephemeral chrome
+  cp -f "$dir/mako.conf" "$CFG/mako/palette.conf"
+  makoctl reload 2>/dev/null
+
+  # 3 · the room's accent walks the window borders
+  hyprctl --batch "\
+    keyword general:col.active_border $BORDER_ACTIVE ;\
+    keyword general:col.inactive_border $BORDER_INACTIVE" >/dev/null
+
+  # 4 · wallpaper — each room keeps its own view
+  wall="$(find "$WALLS" -maxdepth 1 -name "${WALL}.*" 2>/dev/null | head -1)"
+  [ -n "$wall" ] && swww img "$wall" \
+      --transition-type grow --transition-pos center \
+      --transition-fps 75 --transition-duration 0.7 2>/dev/null
+
+  # 5 · whisper to anyone listening (fastfetch logo, prompts, scripts)
+  printf '%s\n' "$ROOM_NAME" > "$CFG/enfilade/room"
+}
+
+# adopt the room we wake up in
+cur_id="$(hyprctl activeworkspace -j 2>/dev/null | jq -r .id)" || cur_id=1
+apply "${cur_id:-1}"
+
+# main loop — socket2 speaks lines like: workspacev2>>4,LISTENING
+socat -u "UNIX-CONNECT:$SOCK" - | while IFS= read -r line; do
+  case "$line" in
+    workspacev2\>\>*)
+        ws="${line#workspacev2>>}"; apply "${ws%%,*}" ;;
+    focusedmonv2\>\>*)                                  # monitor hops
+        ws="${line##*,}"; apply "$ws" ;;
+  esac
+done

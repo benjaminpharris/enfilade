@@ -1,0 +1,22 @@
+# ENFILADE · yazi theme — ANSI-relative; the room paints the file manager.
+[mgr]            # (older yazi: [manager])
+cwd = { fg = "cyan", bold = true }
+hovered         = { fg = "black", bg = "blue" }
+preview_hovered = { underline = true }
+find_keyword  = { fg = "yellow", bold = true }
+find_position = { fg = "magenta", italic = true }
+marker_selected = { fg = "green",  bg = "green" }
+marker_copied   = { fg = "yellow", bg = "yellow" }
+marker_cut      = { fg = "red",    bg = "red" }
+count_selected = { fg = "black", bg = "green" }
+border_symbol = "│"
+border_style  = { fg = "darkgray" }
+
+[mode]
+normal_main = { fg = "black", bg = "blue", bold = true }
+select_main = { fg = "black", bg = "green", bold = true }
+unset_main  = { fg = "black", bg = "red", bold = true }
+
+[status]
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }

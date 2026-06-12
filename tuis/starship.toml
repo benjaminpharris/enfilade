@@ -1,0 +1,31 @@
+# ENFILADE · starship — the prompt is born knowing its room
+format = """
+$env_var\
+$directory\
+$git_branch$git_status\
+$cmd_duration\
+$line_break$character"""
+
+[env_var.ROOM_NAME]
+format = "[◆ $env_value ](bold blue)"
+default = ""
+
+[directory]
+style = "bold cyan"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+style = "bold magenta"
+
+[git_status]
+style = "yellow"
+
+[cmd_duration]
+min_time = 2000
+format = "[ $duration](dim white)"
+
+[character]
+success_symbol = "[❯](bold blue)"
+error_symbol = "[❯](bold red)"

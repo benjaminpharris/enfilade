@@ -1,0 +1,8 @@
+/* ENFILADE · CABLES — spaced copies this to waybar/palette.css live */
+@define-color bg      #131020;
+@define-color bg-alt  #1a1530;
+@define-color fg      #e2dcf2;
+@define-color muted   #7a7396;
+@define-color accent  #a78bfa;
+@define-color accent2 #7dcfff;
+@define-color alert   #e26a8a;

@@ -1,0 +1,8 @@
+/* ENFILADE · ATELIER — spaced copies this to waybar/palette.css live */
+@define-color bg      #11151c;
+@define-color bg-alt  #161b24;
+@define-color fg      #d8dee9;
+@define-color muted   #6b7689;
+@define-color accent  #7fb4ca;
+@define-color accent2 #a3be8c;
+@define-color alert   #d57780;

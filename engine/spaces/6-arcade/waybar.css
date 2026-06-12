@@ -1,0 +1,8 @@
+/* ENFILADE · ARCADE — spaced copies this to waybar/palette.css live */
+@define-color bg      #120a10;
+@define-color bg-alt  #1a0e17;
+@define-color fg      #f2dde6;
+@define-color muted   #8d6f80;
+@define-color accent  #ff4f7b;
+@define-color accent2 #4fd6ff;
+@define-color alert   #ff4f7b;

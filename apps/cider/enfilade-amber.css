@@ -1,0 +1,44 @@
+/* ENFILADE · Cider 2 — Listening Room amber (#ffb454 on #16100a)
+ *
+ * Where it goes: Cider → Settings → Visual / Appearance → custom style /
+ * theme style editor (naming drifts between Cider 2.x releases; it's the
+ * box that accepts CSS). Cider 2 is the paid Taproom/itch build — themes
+ * and this style hook are a headline feature there.
+ *
+ * Honest seam: Cider's DOM shifts between releases, so this leans on
+ * variable overrides (stable surface) plus a few broad, harmless rules.
+ * Unknown variables are simply inert. Recolor by hand from palette.sh
+ * if a release renames things.
+ */
+
+:root, body {
+	/* accent — Cider's key color drives buttons, sliders, highlights */
+	--keyColor: #ffb454 !important;
+	--keyColor-rgb: 255, 180, 84 !important;
+	--accent: #ffb454 !important;
+	--accent-color: #ffb454 !important;
+
+	/* room surfaces — deep warm brown, not gray */
+	--baseColor: #16100a !important;
+	--base-color: #16100a !important;
+	--bgColor: #16100a !important;
+	--background: #16100a !important;
+	--secondaryBgColor: #1e1610 !important;
+
+	--textColor: #f3e4c6 !important;
+	--text-color: #f3e4c6 !important;
+}
+
+::selection { background: rgba(255, 180, 84, 0.30); }
+
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb {
+	background: rgba(255, 180, 84, 0.35);
+	border-radius: 4px;
+}
+*::-webkit-scrollbar-thumb:hover { background: rgba(255, 180, 84, 0.6); }
+
+/* tube-glow on whatever is playing/selected */
+[class*="playing"], [class*="active"] a, .active {
+	color: #ffb454;
+}

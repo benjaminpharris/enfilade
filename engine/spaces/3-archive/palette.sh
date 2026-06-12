@@ -1,0 +1,7 @@
+# ENFILADE room · ARCHIVE
+ROOM_NAME="ARCHIVE"
+WALL="archive"
+BG="#1b1611"; BG_ALT="#221c15"; FG="#e8dcc3"; MUTED="#94876d"
+ACCENT="#d8a657"; ACCENT2="#c14a3a"
+BORDER_ACTIVE="rgba(d8a657ee) rgba(c14a3aee) 45deg"
+BORDER_INACTIVE="rgba(33291daa)"

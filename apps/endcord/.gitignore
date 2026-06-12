@@ -1,0 +1,4 @@
+# never commit credentials — endcord stores plaintext tokens here when
+# the keyring is unavailable
+profiles.json
+*.token

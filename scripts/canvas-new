@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Walk to the CANVAS and make sure the table is set. Obsidian is window-
+# ruled to room 5 + fullscreen; the Excalidraw template (see apps/obsidian)
+# makes every new drawing born dark, zen, on-palette.
+# Creating the drawing itself is one in-app keystroke — bind the plugin's
+# "Create new drawing in the active window" to Ctrl+G inside Obsidian.
+# (If you run the Advanced URI plugin, uncomment the last line for true
+#  one-key new-canvas from anywhere.)
+hyprctl dispatch workspace 5 >/dev/null
+pgrep -x obsidian >/dev/null || { obsidian & disown; }
+# xdg-open "obsidian://advanced-uri?commandid=obsidian-excalidraw-plugin%3Aexcalidraw-autocreate"

@@ -1,0 +1,52 @@
+/* ENFILADE · CANVAS snippet — the drafting table
+ * Vault → Settings → Appearance → CSS snippets → enable "enfilade-canvas".
+ *
+ * Two jobs:
+ *   1. While an Excalidraw view is focused, strip Obsidian's chrome
+ *      (ribbon, tab headers, status bar) so the canvas runs edge to edge.
+ *      Gated with :has() — your notes UI is untouched everywhere else.
+ *   2. Paint Excalidraw's own UI in CANVAS colors (charcoal & cream).
+ */
+
+/* ── 1 · chrome off while drawing ──────────────────────────────────────── */
+body:has(.workspace-leaf.mod-active .workspace-leaf-content[data-type="excalidraw"])
+	.workspace-ribbon.side-dock-ribbon,
+body:has(.workspace-leaf.mod-active .workspace-leaf-content[data-type="excalidraw"])
+	.workspace-tab-header-container,
+body:has(.workspace-leaf.mod-active .workspace-leaf-content[data-type="excalidraw"])
+	.status-bar {
+	display: none;
+}
+body:has(.workspace-leaf.mod-active .workspace-leaf-content[data-type="excalidraw"])
+	.workspace-tabs .workspace-leaf {
+	border-radius: 0;
+}
+
+/* if your Obsidian/Electron predates :has(), comment the block above and
+   uncomment this always-on minimal variant instead:
+.workspace-ribbon.side-dock-ribbon { display: none; }
+*/
+
+/* ── 2 · Excalidraw wears the room ─────────────────────────────────────── */
+.theme-dark .excalidraw {
+	--default-bg-color: #0f1012;        /* matches template viewBackgroundColor */
+	--island-bg-color: rgba(21, 23, 26, 0.96);
+	--color-primary: #d9d2c2;           /* cream — selection, active tool      */
+	--color-primary-darker: #c5bda9;
+	--color-primary-darkest: #aea68f;
+	--color-primary-light: rgba(217, 210, 194, 0.18);
+	--color-on-primary-container: #ece8df;
+	--input-bg-color: #15171a;
+	--button-gray-1: #1a1c20;
+	--button-gray-2: #22252a;
+	--button-gray-3: #2b2f35;
+	--scrollbar-thumb: #2b2f35;
+	--scrollbar-thumb-hover: #8fa3b8;   /* the steel-blue second accent */
+}
+
+/* obsidian surfaces behind/around the canvas, so nothing flashes gray */
+body:has(.workspace-leaf.mod-active .workspace-leaf-content[data-type="excalidraw"])
+	.workspace,
+.workspace-leaf-content[data-type="excalidraw"] .view-content {
+	background-color: #0f1012;
+}

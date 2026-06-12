@@ -1,0 +1,71 @@
+/* ENFILADE · waybar — geometry fixed, color is the room's business */
+@import url("palette.css");
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: alpha(@bg, 0.82);
+  color: @fg;
+  border: 2px solid alpha(@accent, 0.55);
+  border-radius: 14px;
+}
+
+#custom-room {
+  color: @bg;
+  background: @accent;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 0 14px;
+  margin: 4px 6px 4px 4px;
+  border-radius: 10px;
+}
+
+#workspaces button {
+  color: @muted;
+  padding: 0 7px;
+  margin: 4px 1px;
+  border-radius: 9px;
+  background: transparent;
+  transition: all 180ms ease;
+}
+#workspaces button.active {
+  color: @accent;
+  background: alpha(@accent, 0.14);
+}
+#workspaces button:hover { color: @accent2; }
+
+#window { color: @muted; padding: 0 10px; font-style: italic; }
+
+#mpris {
+  color: @accent2;
+  background: alpha(@bg-alt, 0.85);
+  padding: 0 16px;
+  margin: 4px 0;
+  border-radius: 10px;
+  border: 1px solid alpha(@accent2, 0.35);
+}
+#mpris.paused { color: @muted; border-color: alpha(@muted, 0.3); }
+
+#tray, #wireplumber, #bluetooth, #network, #custom-cal, #clock {
+  color: @fg;
+  padding: 0 11px;
+  margin: 4px 1px;
+  border-radius: 9px;
+}
+#wireplumber:hover, #bluetooth:hover, #network:hover,
+#custom-cal:hover { background: alpha(@accent, 0.14); color: @accent; }
+
+#wireplumber.muted, #bluetooth.disabled, #network.disconnected { color: @alert; }
+
+#clock { color: @accent; font-weight: bold; margin-right: 6px; }
+
+tooltip {
+  background: @bg;
+  color: @fg;
+  border: 1px solid @accent;
+  border-radius: 10px;
+}

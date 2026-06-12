@@ -1,0 +1,7 @@
+# ENFILADE room · LISTENING
+ROOM_NAME="LISTENING"
+WALL="listening"
+BG="#16100a"; BG_ALT="#1e1610"; FG="#f3e4c6"; MUTED="#9c8a6a"
+ACCENT="#ffb454"; ACCENT2="#d4756b"
+BORDER_ACTIVE="rgba(ffb454ee) rgba(d4756bee) 45deg"
+BORDER_INACTIVE="rgba(33261aaa)"

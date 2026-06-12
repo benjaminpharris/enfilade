@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# scratch NAME CMD — toggle a console-skinned TUI on special:NAME.
+# First summon spawns it (windowrules float/center/skin it); after that
+# the same key shows/hides. The drawer of shiny toys.
+set -u
+name="$1"; shift
+cmd="$*"
+CFG="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+if ! hyprctl clients -j | jq -e --arg c "console-$name" \
+     'any(.[]; .class == $c)' >/dev/null; then
+  kitty --class "console-$name" \
+        --config "$CFG/kitty/kitty.conf" \
+        --config "$CFG/enfilade/engine/console/kitty.conf" \
+        -e sh -c "$cmd" & disown
+  sleep 0.25
+fi
+hyprctl dispatch togglespecialworkspace "$name" >/dev/null

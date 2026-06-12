@@ -1,0 +1,8 @@
+/* ENFILADE · LISTENING — spaced copies this to waybar/palette.css live */
+@define-color bg      #16100a;
+@define-color bg-alt  #1e1610;
+@define-color fg      #f3e4c6;
+@define-color muted   #9c8a6a;
+@define-color accent  #ffb454;
+@define-color accent2 #d4756b;
+@define-color alert   #d4756b;

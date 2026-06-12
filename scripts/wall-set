@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -u
+CFG="${XDG_CONFIG_HOME:-$HOME/.config}"
+dir=$(echo "$CFG"/enfilade/engine/spaces/"${1:-1}"-*)
+. "$dir/palette.sh"
+w="$(find "$HOME/Pictures/walls" -maxdepth 1 -name "${WALL}.*" 2>/dev/null | head -1)"
+[ -n "$w" ] && exec swww img "$w" --transition-type fade --transition-duration 0.4

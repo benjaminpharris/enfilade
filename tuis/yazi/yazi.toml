@@ -1,0 +1,13 @@
+# ENFILADE · yazi
+[mgr]            # (older yazi: rename this section to [manager])
+ratio = [1, 3, 4]
+sort_by = "natural"
+sort_dir_first = true
+show_symlink = true
+linemode = "size"
+
+[preview]
+wrap = "yes"
+image_filter = "lanczos3"
+max_width  = 1200
+max_height = 1600

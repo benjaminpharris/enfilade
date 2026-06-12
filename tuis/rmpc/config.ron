@@ -1,0 +1,12 @@
+// ENFILADE · rmpc — album art over the kitty graphics protocol,
+// the load-bearing choice from the brainstorm, doing its job.
+(
+    address: "127.0.0.1:6600",
+    theme: Some("enfilade"),
+    album_art: (
+        method: Auto,        // kitty protocol detected automatically
+    ),
+    enable_mouse: true,
+    volume_step: 3,
+    scrolloff: 2,
+)

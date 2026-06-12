@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+command -v impala >/dev/null && echo impala || echo nmtui

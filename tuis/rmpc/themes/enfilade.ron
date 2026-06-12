@@ -1,0 +1,40 @@
+// ENFILADE · rmpc theme — terminal-relative: amber in the Listening Room,
+// teal if you ever summon it in the Atelier. The room decides.
+#![enable(implicit_some)]
+(
+    default_album_art_path: None,
+    show_song_table_header: true,
+    draw_borders: true,
+    background_color: None,                    // terminal background
+    text_color: None,
+    header_background_color: None,
+    modal_background_color: None,
+    tab_bar: (
+        active_style:   (fg: "black", bg: "blue", modifiers: "Bold"),
+        inactive_style: (fg: "gray"),
+    ),
+    borders_style: (fg: "dark_gray"),
+    highlighted_item_style: (fg: "blue", modifiers: "Bold"),
+    current_item_style: (fg: "black", bg: "blue", modifiers: "Bold"),
+    highlight_border_style: (fg: "blue"),
+    progress_bar: (
+        symbols: ["─", "█", "─"],
+        track_style:   (fg: "dark_gray"),
+        elapsed_style: (fg: "blue"),
+        thumb_style:   (fg: "blue"),
+    ),
+    scrollbar: (
+        symbols: ["│", "█", "▲", "▼"],
+        track_style: (fg: "dark_gray"),
+        ends_style:  (fg: "dark_gray"),
+        thumb_style: (fg: "blue"),
+    ),
+    song_table_format: [
+        (prop: (kind: Property(Artist), default: (kind: Text("?"))), width: "22%"),
+        (prop: (kind: Property(Title),  default: (kind: Text("?"))), width: "48%"),
+        (prop: (kind: Property(Album),  default: (kind: Text("?")),
+                style: (fg: "gray")), width: "22%"),
+        (prop: (kind: Property(Duration), default: (kind: Text("-"))),
+                width: "8%", alignment: Right),
+    ],
+)

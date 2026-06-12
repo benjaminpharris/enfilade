@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+CFG="${XDG_CONFIG_HOME:-$HOME/.config}"
+ok(){ printf ' \033[32m✔\033[0m %s\n' "$*"; }
+bad(){ printf ' \033[31m✘\033[0m %s\n' "$*"; }
+echo "ENFILADE doctor"
+for b in hyprctl kitty waybar fuzzel mako swww socat jq rmpc mpc yazi btop \
+         lazygit calcure wiremix bluetui playerctl fastfetch starship; do
+  command -v "$b" >/dev/null && ok "$b" || bad "$b missing"
+done
+[ -L "$CFG/enfilade/current" ] && ok "current → $(readlink "$CFG/enfilade/current" | xargs basename)" \
+                              || bad "current symlink missing"
+[ -S "$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" ] \
+  && ok "socket2 reachable" || bad "socket2 not found (run inside Hyprland)"
+pgrep -f enfilade/engine/spaced >/dev/null && ok "spaced running" || bad "spaced not running"
+n=$(find ~/Pictures/walls -maxdepth 1 -type f 2>/dev/null | wc -l)
+[ "$n" -ge 6 ] && ok "walls: $n found" || bad "walls: $n/6 — drop images in ~/Pictures/walls"
+fc-list | grep -qi "JetBrainsMono Nerd" && ok "nerd font" || bad "JetBrainsMono Nerd Font missing"
+systemctl --user is-active -q mpd && ok "mpd" || bad "mpd service inactive"

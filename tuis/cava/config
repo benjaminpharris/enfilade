@@ -1,0 +1,29 @@
+# ENFILADE · cava — lives in the Listening Room, wears its glow.
+[general]
+framerate = 60
+bars = 0
+bar_width = 2
+bar_spacing = 1
+sleep_timer = 3
+
+[input]
+method = pipewire
+source = auto
+
+[output]
+method = ncurses
+channels = stereo
+mono_option = average
+
+[color]
+gradient = 1
+gradient_count = 5
+gradient_color_1 = '#3a2a18'
+gradient_color_2 = '#8a5a2a'
+gradient_color_3 = '#d4756b'
+gradient_color_4 = '#e6a23c'
+gradient_color_5 = '#ffb454'
+
+[smoothing]
+noise_reduction = 72
+monstercat = 1

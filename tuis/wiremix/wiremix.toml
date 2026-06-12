@@ -1,0 +1,8 @@
+# ENFILADE · wiremix — the audio console
+mouse = true
+peaks = "auto"
+char_set = "default"
+theme = "default"            # default theme is terminal-relative
+tab = "playback"
+max_volume_percent = 120.0
+enforce_max_volume = true
