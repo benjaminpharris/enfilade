@@ -8,4 +8,4 @@
 #  one-key new-canvas from anywhere.)
 hyprctl dispatch workspace 5 >/dev/null
 pgrep -x obsidian >/dev/null || { obsidian & disown; }
-# xdg-open "obsidian://advanced-uri?commandid=obsidian-excalidraw-plugin%3Aexcalidraw-autocreate"
+xdg-open "obsidian://advanced-uri?commandid=obsidian-excalidraw-plugin%3Aexcalidraw-autocreate"

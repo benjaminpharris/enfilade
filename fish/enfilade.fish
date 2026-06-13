@@ -1,4 +1,6 @@
 # ENFILADE · fish conf.d — sourced by every new shell
+# ii used to put ~/.local/bin on PATH; now we own that responsibility.
+fish_add_path -g ~/.local/bin
 # Export the room this shell was BORN in (matches the terminal's palette).
 if test -r ~/.config/enfilade/current/palette.sh
     for line in (sh -c '. ~/.config/enfilade/current/palette.sh; \

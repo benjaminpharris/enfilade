@@ -33,13 +33,25 @@ sudo pacman -S --needed --noconfirm \
 
 # ── 2 · AUR ──────────────────────────────────────────────────────────────────
 say "AUR packages ($AUR)"
+# Soft-fail: a broken AUR build must not strand the config linking below —
+# enfilade-doctor reports any binary still missing at the end.
 $AUR -S --needed --noconfirm \
   bluetui \
-  calcure \
   swayosd-git \
   vesktop-bin \
   mpd-mpris \
-  python-pillow                      # endcord media rendering dep
+  python-pillow \
+  || note "some AUR builds failed — rerun later or install individually; continuing"
+
+# calcure: its AUR python dep-chain (holidays/convertdate/jdatetime/nspektr…)
+# is brittle during Arch's python rebuild windows. AUR first, PyPI fallback.
+if ! command -v calcure >/dev/null; then
+  $AUR -S --needed --noconfirm calcure || {
+    note "calcure AUR build failed → installing from PyPI via pipx instead"
+    sudo pacman -S --needed --noconfirm python-pipx
+    pipx install calcure || note "calcure skipped — SUPER+C stays inert until installed"
+  }
+fi
 # endcord — prefer AUR, fall back to upstream pipx:
 if ! $AUR -S --needed --noconfirm endcord 2>/dev/null; then
   note "endcord not in AUR mirror right now → installing from source via pipx"

@@ -22,13 +22,13 @@ tags: [excalidraw]
 		"theme": "dark",
 		"viewBackgroundColor": "#0f1012",
 		"currentItemStrokeColor": "#ece8df",
-		"currentItemBackgroundColor": "transparent",
+		"currentItemBackgroundColor": "#0f1012",
 		"currentItemFillStyle": "solid",
 		"currentItemStrokeWidth": 1,
 		"currentItemRoughness": 1,
 		"currentItemFontFamily": 3,
 		"currentItemFontSize": 20,
-		"gridSize": null
+		"gridSize": 20
 	},
 	"files": {}
 }

@@ -13,50 +13,7 @@ Hyprland 0.54's built-in scrolling layout is the architectural pun: the Atelier
 literally *is* an enfilade — an infinite strip of aligned columns you walk
 through.
 
----
-
-## _Vibecoding Disclaimer and Forward_
-
-> The entirety of this reposity has been build by _Claude 5 Fable (Max)_. I structured my prompting based on some information described in this forward section, and decided to be entirely hands-off to see how it would perform. My approach to vibecoding has been to treat LLMs as an interactive reference, and to keep it to specific questions while I manage and implement the overall direction. This is a step away from that. If you decide to implement these dots, just know that I haven't actually been inside the plumbing yet and verified anything.
-
-### _Use at your own risk._
-
-- This entire repo is a test of Anthropic _Fable 5 Max_ and has been 100% vibecoded using the prompt(s) described below
-- The initial scoping was completed using _Opus 5 High_ and the context was fed to _Fable_ for the actual build. The chat with Opus was purely scaffolding / brainstorming, scoping current cutting-edge rice utilities. My intention was actually to do the rice myself as a project, but the chat coincided with two things:
-   1. My quickshell setup starting to disintegrate into an unusable mess
-   2. The release of Fable 5 on the Pro Plan
-
-## I'm probably about to destroy my entire Cachy install by running this, but gotta do it for science
-
----
-
-### Opus Prompts
-
-```
-1.So I think i'm kind of getting the itch to change my hyprland rice and dots. As you probably know, I'm using the illogical-impulse quickshell. Which has been awesome and was a nice way to get a more exciting hyprland without having to write my own QMK. But it's kind of hit the edge of where I'm satisfied - I want to change the look and feel up, add and remove various functionality, and generally make it my own. Which all is to say I think I want to try and do my own ground-up rice. I considered the one infinite scrolling wm (can't remember the name) but I've also seen some amazing quickshell dots on reddit. So I think what I may do is some deeper research into rices people have done and see who has full dots on github I can grab and modify.
-
-/r/unixporn is usually my go to as well as /r/hyprland but can you recommend other places to look or potentially even some specific dots I might like?
-```
-
-```
-2. This is actually my biggest gripe with illogical's - the material-you is really deeply baked in, and it makes very nice themes, but I really want more vibrancy in my environment.
-
-Great resource list though, thank you.
-
-Here's my environment vision too - same desktop switching workflow that's so central to my current setup (SUPER+1-N) but each of those is a niri style scrolling space with a different theme or "focus" - one for work, one for research / coding / computing projects, one for gaming, one for audiophile, one for art. Not saying that to get like a guide on builds, just kind of exploring the concept there and putting it in writing so I remember.
-
-One thing I like fantasize about having is an auto-launch full screen obsidian+excalidraw canvas for just like scratch noting day to day. In a sense the canvas is just the desktop in that specific space.
-```
-
-### Fable Prompt
-
-```
-Based on our conversation regarding the hyprland rice, can you put together a build including pull sources and rice files - the key applications to approach TUI integration are Discord, Steam, Apple Music / Cider, the Obsidian Exalidraw fullscreen (with relevant default theming for new excalidraw startup, as well as bluetooth, calendar, wifi, audio, and other needed and excellent utilities,  with a focus on 'shiny toys'. Keep the goals I stated in that brainstorming chat in mind as you build, and approach the implementation with a strong aesthetic sense and sense of purpose. Thank you!
-```
----
-
-
----
+──────────────────────────────────────────────────────────────────────────────
 
 ## The six rooms
 

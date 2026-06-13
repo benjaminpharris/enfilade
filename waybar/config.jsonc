@@ -36,7 +36,7 @@
     "player-icons": { "default": "▶", "mpd": "󰝚", "cider": "" },
     "status-icons": { "paused": "⏸" },
     "on-click": "playerctl play-pause",
-    "on-click-right": "scratch music rmpc"
+    "on-click-right": "~/.local/bin/scratch music rmpc"
   },
 
   "tray": { "spacing": 10 },
@@ -45,7 +45,7 @@
     "format": "{icon} {volume}%",
     "format-muted": "󰝟",
     "format-icons": ["󰕿","󰖀","󰕾"],
-    "on-click": "scratch audio wiremix",
+    "on-click": "~/.local/bin/scratch audio wiremix",
     "on-click-right": "swayosd-client --output-volume mute-toggle",
     "scroll-step": 3
   },
@@ -55,7 +55,7 @@
     "format-connected": "󰂱 {num_connections}",
     "format-disabled": "󰂲",
     "tooltip-format-connected": "{device_enumerate}",
-    "on-click": "scratch bt bluetui"
+    "on-click": "~/.local/bin/scratch bt bluetui"
   },
 
   "network": {
@@ -64,13 +64,13 @@
     "format-disconnected": "󰤭",
     "tooltip-format-wifi": "{essid} · {signalStrength}%",
     "tooltip-format-ethernet": "{ifname}",
-    "on-click": "scratch net \"$(wifi-tui)\""
+    "on-click": "~/.local/bin/scratch net \"$($HOME/.local/bin/wifi-tui)\""
   },
 
   "custom/cal": {
     "format": "󰃭",
     "tooltip": false,
-    "on-click": "scratch cal calcure"
+    "on-click": "~/.local/bin/scratch cal calcure"
   },
 
   "clock": {
