@@ -9,7 +9,7 @@
   "modules-left":   ["custom/room", "hyprland/workspaces", "hyprland/window"],
   "modules-center": ["mpris"],
   "modules-right":  ["tray", "wireplumber", "bluetooth", "network",
-                     "custom/cal", "clock"],
+                     "custom/cal", "clock", "custom/power"],
 
   "custom/room": {
     "exec": "cat ~/.config/enfilade/room 2>/dev/null || echo ATELIER",
@@ -77,5 +77,10 @@
     "format": "{:%H:%M}",
     "format-alt": "{:%a %d %b · %H:%M}",
     "tooltip-format": "<tt>{calendar}</tt>"
+  },
+  "custom/power": {
+    "format": "󰐥",
+    "tooltip": false,
+    "on-click": "wlogout -p layer-shell -b 3 -m 30 -c 12 -r 12"
   }
 }
