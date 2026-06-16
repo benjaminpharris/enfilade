@@ -50,7 +50,7 @@ window#waybar {
 }
 #mpris.paused { color: @muted; border-color: alpha(@muted, 0.3); }
 
-#tray, #wireplumber, #bluetooth, #network, #custom-cal, #clock {
+#tray, #wireplumber, #bluetooth, #network, #custom-cal, #clock, #custom-power {
   color: @fg;
   padding: 0 11px;
   margin: 4px 1px;
